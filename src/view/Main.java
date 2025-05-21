@@ -65,15 +65,30 @@ public class Main {
 
             try {
                 switch (opcao) {
-                    case 1 -> menuProfessores(sc, professorService, professorRepo);
-                    case 2 -> menuAlunos(sc, alunoService);
-                    case 3 -> menuModalidades(sc, modalidadeService);
-                    case 4 -> menuTurmas(sc, turmaService, alunoService, professorService, modalidadeService);
+                    case 1 -> {
+                        menuProfessores(sc, professorService, professorRepo);
+                        break;
+                    }
+                    case 2 -> {
+                        menuAlunos(sc, alunoService);
+                        break;
+                    }
+                    case 3 -> {
+                        menuModalidades(sc, modalidadeService);
+                        break;
+                    }
+                    case 4 -> {
+                        menuTurmas(sc, turmaService, alunoService, professorService, modalidadeService);
+                        break;
+                    }
                     case 0 -> {
                         System.out.println("Encerrando...");
                         return;
                     }
-                    default -> System.out.println("Opção inválida!");
+                    default -> {
+                        System.out.println("Opção inválida!");
+                        break;
+                    }
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println("Erro: " + e.getMessage());
@@ -109,12 +124,14 @@ public class Main {
                         String disciplina = sc.nextLine();
                         servico.cadastrar(new Professor(id, nome, disciplina));
                         System.out.println("Professor cadastrado com sucesso!");
+                        break;
                     }
                     case 2 -> {
                         System.out.print("ID: ");
                         int id = sc.nextInt();
                         Professor p = servico.buscarPorId(id);
                         System.out.println(p != null ? p : "Professor não encontrado.");
+                        break;
                     }
                     case 3 -> {
                         System.out.print("ID do professor a atualizar: ");
@@ -126,23 +143,29 @@ public class Main {
                         String disciplina = sc.nextLine();
                         servico.atualizar(new Professor(id, nome, disciplina));
                         System.out.println("Professor atualizado com sucesso!");
+                        break;
                     }
                     case 4 -> {
                         System.out.print("ID do professor a remover: ");
                         int id = sc.nextInt();
                         servico.remover(id);
                         System.out.println("Professor removido com sucesso!");
+                        break;
                     }
                     case 5 -> {
                         System.out.println("\nLista de Professores:");
                         for (Professor p : repositorio.listar()) {
                             System.out.println(p);
                         }
+                        break;
                     }
                     case 0 -> {
                         return;
                     }
-                    default -> System.out.println("Opção inválida!");
+                    default -> {
+                        System.out.println("Opção inválida!");
+                        break;
+                    }
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println("Erro: " + e.getMessage());
@@ -185,12 +208,14 @@ public class Main {
                         String observacoesSaude = sc.nextLine();
                         servico.cadastrarAluno(new Aluno(nome, cpf, telefone, email, dataNascimento, responsavel, observacoesSaude));
                         System.out.println("Aluno cadastrado com sucesso!");
+                        break;
                     }
                     case 2 -> {
                         System.out.print("CPF: ");
                         String cpf = sc.nextLine();
                         Aluno a = servico.buscarAlunoPorCpf(cpf);
                         System.out.println(a != null ? a : "Aluno não encontrado.");
+                        break;
                     }
                     case 3 -> {
                         System.out.print("CPF do aluno a atualizar: ");
@@ -209,6 +234,7 @@ public class Main {
                         String observacoesSaude = sc.nextLine();
                         servico.atualizarAluno(new Aluno(nome, cpf, telefone, email, dataNascimento, responsavel, observacoesSaude));
                         System.out.println("Aluno atualizado com sucesso!");
+                        break;
                     }
                     case 4 -> {
                         System.out.print("CPF do aluno a remover: ");
@@ -225,7 +251,9 @@ public class Main {
                     case 0 -> {
                         return;
                     }
-                    default -> System.out.println("Opção inválida!");
+                    default -> {
+                        System.out.println("Opção inválida!");
+                    }
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println("Erro: " + e.getMessage());
@@ -265,12 +293,14 @@ public class Main {
                         int idadeMaxima = sc.nextInt();
                         servico.cadastrarModalidade(new Modalidade(id, nome, descricao, idadeMinima, idadeMaxima));
                         System.out.println("Modalidade cadastrada com sucesso!");
+                        break;
                     }
                     case 2 -> {
                         System.out.print("ID: ");
                         int id = sc.nextInt();
                         Modalidade m = servico.buscarModalidadePorId(id);
                         System.out.println(m != null ? m : "Modalidade não encontrada.");
+                        break;
                     }
                     case 3 -> {
                         System.out.print("ID da modalidade a atualizar: ");
@@ -286,6 +316,7 @@ public class Main {
                         int idadeMaxima = sc.nextInt();
                         servico.atualizarModalidade(new Modalidade(id, nome, descricao, idadeMinima, idadeMaxima));
                         System.out.println("Modalidade atualizada com sucesso!");
+                        break;
                     }
                     case 4 -> {
                         System.out.print("ID da modalidade a remover: ");
@@ -302,7 +333,9 @@ public class Main {
                     case 0 -> {
                         return;
                     }
-                    default -> System.out.println("Opção inválida!");
+                    default -> {
+                        System.out.println("Opção inválida!");
+                    }
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println("Erro: " + e.getMessage());
@@ -357,12 +390,14 @@ public class Main {
                         Turma turma = new Turma(id, modalidade, professor, diaSemana, horarioAula, capacidadeMaxima);
                         servico.criarTurma(turma);
                         System.out.println("Turma criada com sucesso!");
+                        break;
                     }
                     case 2 -> {
                         System.out.print("ID: ");
                         int id = sc.nextInt();
                         Turma t = servico.buscarTurmaPorId(id);
                         System.out.println(t != null ? t : "Turma não encontrada.");
+                        break;
                     }
                     case 3 -> {
                         System.out.print("ID da turma a atualizar: ");
@@ -391,18 +426,21 @@ public class Main {
                         Turma turma = new Turma(id, modalidade, professor, diaSemana, horarioAula, capacidadeMaxima);
                         servico.atualizarTurma(turma);
                         System.out.println("Turma atualizada com sucesso!");
+                        break;
                     }
                     case 4 -> {
                         System.out.print("ID da turma a encerrar: ");
                         int id = sc.nextInt();
                         servico.encerrarTurma(id);
                         System.out.println("Turma encerrada com sucesso!");
+                        break;
                     }
                     case 5 -> {
                         System.out.println("\nLista de Turmas:");
                         for (Turma t : servico.listarTodasTurmas()) {
                             System.out.println(t);
                         }
+                        break;
                     }
                     case 6 -> {
                         System.out.print("ID da turma: ");
@@ -415,11 +453,15 @@ public class Main {
                         } else {
                             System.out.println("Não foi possível matricular o aluno.");
                         }
+                        break;
                     }
                     case 0 -> {
                         return;
                     }
-                    default -> System.out.println("Opção inválida!");
+                    default -> {
+                        System.out.println("Opção inválida!");
+                        break;
+                    }
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println("Erro: " + e.getMessage());

@@ -33,6 +33,17 @@ public class ModalidadeRepository implements IModalidadeRepository {
 
     @Override
     public void remover(int id) {
+        // Primeiro, remover todas as turmas associadas
+        String sqlTurmas = "DELETE FROM turmas WHERE id_modalidade = ?";
+        try (Connection conn = Conexao.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sqlTurmas)) {
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException("Erro ao remover turmas associadas: " + e.getMessage(), e);
+        }
+        
+        // Depois, remover a modalidade
         String sql = "DELETE FROM modalidades WHERE id = ?";
         
         try (Connection conn = Conexao.getConexao();

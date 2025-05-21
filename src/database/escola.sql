@@ -40,14 +40,3 @@ CREATE TABLE IF NOT EXISTS turmas (
     FOREIGN KEY (id_professor) REFERENCES professores(id) ON DELETE RESTRICT,
     FOREIGN KEY (id_modalidade) REFERENCES modalidades(id) ON DELETE RESTRICT
 );
-
--- Tabela de Matrículas (relacionamento entre Turmas e Alunos)
-CREATE TABLE IF NOT EXISTS matriculas (
-    id_turma INT,
-    cpf_aluno VARCHAR(14),
-    PRIMARY KEY (id_turma, cpf_aluno),
-    FOREIGN KEY (id_turma) REFERENCES turmas(id) ON DELETE CASCADE,
-    FOREIGN KEY (cpf_aluno) REFERENCES alunos(cpf) ON DELETE CASCADE,
-    CONSTRAINT fk_turma_matricula FOREIGN KEY (id_turma) REFERENCES turmas(id),
-    CONSTRAINT fk_aluno_matricula FOREIGN KEY (cpf_aluno) REFERENCES alunos(cpf)
-); 
