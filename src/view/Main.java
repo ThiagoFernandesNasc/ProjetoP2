@@ -65,27 +65,27 @@ public class Main {
 
             try {
                 switch (opcao) {
-                    case 1 -> {
+                    case 1: {
                         menuProfessores(sc, professorService, professorRepo);
                         break;
                     }
-                    case 2 -> {
+                    case 2: {
                         menuAlunos(sc, alunoService);
                         break;
                     }
-                    case 3 -> {
+                    case 3: {
                         menuModalidades(sc, modalidadeService);
                         break;
                     }
-                    case 4 -> {
+                    case 4: {
                         menuTurmas(sc, turmaService, alunoService, professorService, modalidadeService);
                         break;
                     }
-                    case 0 -> {
+                    case 0: {
                         System.out.println("Encerrando...");
                         return;
                     }
-                    default -> {
+                    default: {
                         System.out.println("Opção inválida!");
                         break;
                     }
@@ -114,7 +114,7 @@ public class Main {
 
             try {
                 switch (opcao) {
-                    case 1 -> {
+                    case 1: {
                         System.out.print("ID: ");
                         int id = sc.nextInt();
                         sc.nextLine();
@@ -126,14 +126,14 @@ public class Main {
                         System.out.println("Professor cadastrado com sucesso!");
                         break;
                     }
-                    case 2 -> {
+                    case 2: {
                         System.out.print("ID: ");
                         int id = sc.nextInt();
                         Professor p = servico.buscarPorId(id);
                         System.out.println(p != null ? p : "Professor não encontrado.");
                         break;
                     }
-                    case 3 -> {
+                    case 3: {
                         System.out.print("ID do professor a atualizar: ");
                         int id = sc.nextInt();
                         sc.nextLine();
@@ -145,24 +145,24 @@ public class Main {
                         System.out.println("Professor atualizado com sucesso!");
                         break;
                     }
-                    case 4 -> {
+                    case 4: {
                         System.out.print("ID do professor a remover: ");
                         int id = sc.nextInt();
                         servico.remover(id);
                         System.out.println("Professor removido com sucesso!");
                         break;
                     }
-                    case 5 -> {
+                    case 5: {
                         System.out.println("\nLista de Professores:");
                         for (Professor p : repositorio.listar()) {
                             System.out.println(p);
                         }
                         break;
                     }
-                    case 0 -> {
+                    case 0: {
                         return;
                     }
-                    default -> {
+                    default: {
                         System.out.println("Opção inválida!");
                         break;
                     }
@@ -191,7 +191,7 @@ public class Main {
 
             try {
                 switch (opcao) {
-                    case 1 -> {
+                    case 1: {
                         System.out.print("CPF: ");
                         String cpf = sc.nextLine();
                         System.out.print("Nome: ");
@@ -210,14 +210,14 @@ public class Main {
                         System.out.println("Aluno cadastrado com sucesso!");
                         break;
                     }
-                    case 2 -> {
+                    case 2: {
                         System.out.print("CPF: ");
                         String cpf = sc.nextLine();
                         Aluno a = servico.buscarAlunoPorCpf(cpf);
                         System.out.println(a != null ? a : "Aluno não encontrado.");
                         break;
                     }
-                    case 3 -> {
+                    case 3: {
                         System.out.print("CPF do aluno a atualizar: ");
                         String cpf = sc.nextLine();
                         System.out.print("Novo nome: ");
@@ -236,23 +236,26 @@ public class Main {
                         System.out.println("Aluno atualizado com sucesso!");
                         break;
                     }
-                    case 4 -> {
+                    case 4: {
                         System.out.print("CPF do aluno a remover: ");
                         String cpf = sc.nextLine();
                         servico.removerAluno(cpf);
                         System.out.println("Aluno removido com sucesso!");
+                        break;
                     }
-                    case 5 -> {
+                    case 5: {
                         System.out.println("\nLista de Alunos:");
                         for (Aluno a : servico.listarTodosAlunos()) {
                             System.out.println(a);
                         }
+                        break;
                     }
-                    case 0 -> {
+                    case 0: {
                         return;
                     }
-                    default -> {
+                    default: {
                         System.out.println("Opção inválida!");
+                        break;
                     }
                 }
             } catch (IllegalArgumentException e) {
@@ -279,7 +282,7 @@ public class Main {
 
             try {
                 switch (opcao) {
-                    case 1 -> {
+                    case 1: {
                         System.out.print("ID: ");
                         int id = sc.nextInt();
                         sc.nextLine();
@@ -295,14 +298,14 @@ public class Main {
                         System.out.println("Modalidade cadastrada com sucesso!");
                         break;
                     }
-                    case 2 -> {
+                    case 2: {
                         System.out.print("ID: ");
                         int id = sc.nextInt();
                         Modalidade m = servico.buscarModalidadePorId(id);
                         System.out.println(m != null ? m : "Modalidade não encontrada.");
                         break;
                     }
-                    case 3 -> {
+                    case 3: {
                         System.out.print("ID da modalidade a atualizar: ");
                         int id = sc.nextInt();
                         sc.nextLine();
@@ -318,23 +321,26 @@ public class Main {
                         System.out.println("Modalidade atualizada com sucesso!");
                         break;
                     }
-                    case 4 -> {
+                    case 4: {
                         System.out.print("ID da modalidade a remover: ");
                         int id = sc.nextInt();
                         servico.removerModalidade(id);
                         System.out.println("Modalidade removida com sucesso!");
+                        break;
                     }
-                    case 5 -> {
+                    case 5: {
                         System.out.println("\nLista de Modalidades:");
                         for (Modalidade m : servico.listarTodasModalidades()) {
                             System.out.println(m);
                         }
+                        break;
                     }
-                    case 0 -> {
+                    case 0: {
                         return;
                     }
-                    default -> {
+                    default: {
                         System.out.println("Opção inválida!");
+                        break;
                     }
                 }
             } catch (IllegalArgumentException e) {
@@ -363,7 +369,7 @@ public class Main {
 
             try {
                 switch (opcao) {
-                    case 1 -> {
+                    case 1: {
                         System.out.print("ID: ");
                         int id = sc.nextInt();
                         sc.nextLine();
@@ -392,14 +398,14 @@ public class Main {
                         System.out.println("Turma criada com sucesso!");
                         break;
                     }
-                    case 2 -> {
+                    case 2: {
                         System.out.print("ID: ");
                         int id = sc.nextInt();
                         Turma t = servico.buscarTurmaPorId(id);
                         System.out.println(t != null ? t : "Turma não encontrada.");
                         break;
                     }
-                    case 3 -> {
+                    case 3: {
                         System.out.print("ID da turma a atualizar: ");
                         int id = sc.nextInt();
                         sc.nextLine();
@@ -428,21 +434,21 @@ public class Main {
                         System.out.println("Turma atualizada com sucesso!");
                         break;
                     }
-                    case 4 -> {
+                    case 4: {
                         System.out.print("ID da turma a encerrar: ");
                         int id = sc.nextInt();
                         servico.encerrarTurma(id);
                         System.out.println("Turma encerrada com sucesso!");
                         break;
                     }
-                    case 5 -> {
+                    case 5: {
                         System.out.println("\nLista de Turmas:");
                         for (Turma t : servico.listarTodasTurmas()) {
                             System.out.println(t);
                         }
                         break;
                     }
-                    case 6 -> {
+                    case 6: {
                         System.out.print("ID da turma: ");
                         int idTurma = sc.nextInt();
                         sc.nextLine();
@@ -455,10 +461,10 @@ public class Main {
                         }
                         break;
                     }
-                    case 0 -> {
+                    case 0: {
                         return;
                     }
-                    default -> {
+                    default: {
                         System.out.println("Opção inválida!");
                         break;
                     }
